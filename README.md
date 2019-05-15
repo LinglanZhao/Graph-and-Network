@@ -6,7 +6,7 @@
 ### Kirkman-9 using *Hill Climbing*
 ![image](https://github.com/LinglanZhao/Graph-and-Network/blob/master/Results/Kirkman9.png)
 ### Kirkman-9 using *Simulated Annealing*
-Initial Point:
+#### Initial Point:
 ![image](https://github.com/LinglanZhao/Graph-and-Network/blob/master/Results/Kirkman15(1).png)
-Optimal Solution:
+#### Optimal Solution:
 ![image](https://github.com/LinglanZhao/Graph-and-Network/blob/master/Results/Kirkman15(2).png)
