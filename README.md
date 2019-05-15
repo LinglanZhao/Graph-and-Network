@@ -5,7 +5,7 @@
 ## Kirkman Schoolgirl
 ### Kirkman-9 using *Hill Climbing*
 ![image](https://github.com/LinglanZhao/Graph-and-Network/blob/master/Results/Kirkman9.png)
-### Kirkman-9 using *Simulated Annealing*
+### Kirkman-15 using *Simulated Annealing*
 #### Initial Point:
 ![image](https://github.com/LinglanZhao/Graph-and-Network/blob/master/Results/Kirkman15(1).png)
 #### Optimal Solution:
