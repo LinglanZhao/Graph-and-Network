@@ -2,33 +2,34 @@ import numpy as np
 from scipy.special import comb
 from itertools import combinations
 
-def ExpWeight(ColorMat):
+def ExpWeight(ColorMat,edge_c):
     # compute the conditional expectations
     E = 0
     n, n1 = ColorMat.shape
     assert n == n1
     # loop over all K4s
     for K4 in combinations(range(n), 4):
-        indicator = 0       # define the indicator variable
-        numW, numB, numN = 0, 0, 0
-        for edge in combinations(list(K4), 2):
-            i, j = edge
-            if ColorMat[i, j] == 1:
-                numW += 1
-            elif ColorMat[i, j] == -1:
-                numB += 1
-            else:
-                numN += 1
-        assert (numW + numB + numN) == 6
-        
-        if (numW != 0) & (numB != 0):
-            indicator = 0
-        elif (numW == 0) & (numB == 0):
-            indicator = (2.0)**(-5)
-        else:
-            indicator = (2.0)**(-1 * numN)
+        if set(edge_c) < set(K4):
+            indicator = 0       # define the indicator variable
+            numW, numB, numN = 0, 0, 0
+            for edge in combinations(list(K4), 2):
+                i, j = edge
+                if ColorMat[i, j] == 1:
+                    numW += 1
+                elif ColorMat[i, j] == -1:
+                    numB += 1
+                else:
+                    numN += 1
+            assert (numW + numB + numN) == 6
 
-        E = E + indicator
+            if (numW != 0) & (numB != 0):
+                indicator = 0
+            elif (numW == 0) & (numB == 0):
+                indicator = (2.0)**(-5)
+            else:
+                indicator = (2.0)**(-1 * numN)
+
+            E = E + indicator
     return E
 
 def Count_K4(ColorMat):
@@ -73,7 +74,7 @@ for num, edge in enumerate(combinations(range(n), 2)):
     Eb = ExpWeight(ColortempB) # compute the expectaion conditioned on that edge is colored black
     # De-randomization
     ColorMat = ColortempW if (Ew <= Eb) else ColortempB
-    assert E_prev == (Ew + Eb) / 2
+#     assert E_prev == (Ew + Eb) / 2
     E_prev = min(Ew, Eb)
 
 print('===========================================')
